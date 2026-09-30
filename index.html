@@ -1,42 +1,75 @@
-<!DOCTYPE html>
+    <!DOCTYPE html>
 <html lang="de">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Leo Adventure</title>
+    <title>Leo-Lukas – Ein Morgen wie jeder andere</title>
     <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-<div id="game">
+<div id="game-wrapper">
 
-    <canvas id="gameCanvas"></canvas>
+    <div id="topbar">
+        <div class="game-title">LEO-LUKAS</div>
 
-    <div id="hud">
-        <div>Leo</div>
-        <div>Uhrzeit: <span id="clock">06:00</span></div>
-        <div>Aufgaben: <span id="tasks">0/3</span></div>
+        <div class="objective">
+            <span>ZIEL</span>
+            <strong id="objectiveText">Schalte den Wecker aus.</strong>
+        </div>
+
+        <div class="inventory">
+            <span>RUCKSACK</span>
+            <div id="inventorySlots">
+                <div class="slot" id="slot-backpack"></div>
+                <div class="slot" id="slot-breakfast"></div>
+                <div class="slot" id="slot-key"></div>
+            </div>
+        </div>
     </div>
 
-    <div id="interaction">
-        <span id="interactionText"></span>
-        <button id="interactionButton">Interagieren</button>
-    </div>
+    <main>
+        <canvas id="gameCanvas" width="960" height="540"></canvas>
 
-    <div id="dialog">
-        <div id="dialogName"></div>
-        <div id="dialogText"></div>
-        <button id="dialogNext">Weiter</button>
-    </div>
+        <div id="interaction">
+            <div class="interaction-key">E</div>
+            <div id="interactionText">Interagieren</div>
+        </div>
+
+        <div id="dialogue" class="hidden">
+            <div id="dialogueName">Mutter</div>
+            <div id="dialogueText"></div>
+            <button id="dialogueNext">WEITER</button>
+        </div>
+
+        <div id="notification"></div>
+
+        <div id="controls">
+            <span>WASD / PFEILTASTEN</span>
+            <span>E – INTERAGIEREN</span>
+            <span>ESC – MENÜ</span>
+        </div>
+    </main>
 
     <div id="mobileControls">
-        <button id="up">▲</button>
-        <button id="left">◀</button>
-        <button id="down">▼</button>
-        <button id="right">▶</button>
+        <button data-key="up">▲</button>
+        <div>
+            <button data-key="left">◀</button>
+            <button data-key="down">▼</button>
+            <button data-key="right">▶</button>
+        </div>
+        <button id="mobileInteract">E</button>
     </div>
 
+</div>
+
+<div id="pauseMenu" class="hidden">
+    <div class="pause-box">
+        <h1>PAUSE</h1>
+        <p>Leo ist gerade unterwegs.</p>
+        <button id="resumeButton">WEITERSPIELEN</button>
+        <button id="resetButton">NEUSTART</button>
+    </div>
 </div>
 
 <script src="script.js"></script>
